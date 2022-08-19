@@ -74,6 +74,15 @@ class ViewController: UIViewController {
         return loginButton
     }()
 
+    private lazy var forgotYourPasswordButton: UIButton = {
+        let forgotPassword = UIButton()
+        forgotPassword.setTitle("Forgot your password?", for: .normal)
+        forgotPassword.setTitleColor(.white, for: .normal)
+        forgotPassword.titleLabel?.font = UIFont.systemFont(ofSize: 15, weight: .bold)
+        forgotPassword.translatesAutoresizingMaskIntoConstraints = false
+        return forgotPassword
+    }()
+
     // MARK: - Lifecycle
 
     override func viewDidLoad() {
@@ -90,6 +99,7 @@ class ViewController: UIViewController {
         view.addSubview(loginTextField)
         view.addSubview(passTextField)
         view.addSubview(loginButton)
+        view.addSubview(forgotYourPasswordButton)
     }
 
 
@@ -128,6 +138,11 @@ class ViewController: UIViewController {
             make.top.equalTo(passTextField.snp.centerY).multipliedBy(1.4)
             make.width.equalTo(view.snp.width).multipliedBy(0.8)
             make.height.equalTo(40)
+        }
+
+        forgotYourPasswordButton.snp.makeConstraints { make in
+            make.centerX.equalTo(view)
+            make.top.equalTo(loginButton.snp.centerY).multipliedBy(1.1)
         }
 
     }
