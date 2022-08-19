@@ -117,6 +117,55 @@ class ViewController: UIViewController {
         return connectStackView
     }()
 
+    private lazy var facebookButton: UIButton = {
+        let facebookButton = UIButton()
+        facebookButton.setTitle("Facebook", for: .normal)
+        facebookButton.setTitleColor(.white, for: .normal)
+        facebookButton.backgroundColor = UIColor(red: 45/255, green: 173/255, blue: 252/255, alpha: 1)
+        facebookButton.titleLabel?.font = UIFont.systemFont(ofSize: 13, weight: .bold)
+        facebookButton.setImage(UIImage(named: "facebook"), for: .normal)
+        facebookButton.contentHorizontalAlignment = .left
+        facebookButton.clipsToBounds = true
+        facebookButton.layer.cornerRadius = 20
+        facebookButton.layer.shadowColor = UIColor.black.cgColor
+        facebookButton.layer.shadowOpacity = 0.4
+        facebookButton.layer.shadowOffset = .zero
+        facebookButton.layer.shadowRadius = 10
+        facebookButton.layer.masksToBounds = false
+        facebookButton.layer.shouldRasterize = true
+        facebookButton.layer.rasterizationScale = UIScreen.main.scale
+        return facebookButton
+    }()
+
+    private lazy var twitterButton: UIButton = {
+        let twitterButton = UIButton()
+        twitterButton.setTitle("Twitter", for: .normal)
+        twitterButton.setTitleColor(.white, for: .normal)
+        twitterButton.backgroundColor = UIColor(red: 38/255, green: 75/255, blue: 148/255, alpha: 1)
+        twitterButton.titleLabel?.font = UIFont.systemFont(ofSize: 13, weight: .bold)
+        twitterButton.setImage(UIImage(named: "twitter"), for: .normal)
+        twitterButton.contentHorizontalAlignment = .left
+        twitterButton.clipsToBounds = true
+        twitterButton.layer.cornerRadius = 20
+        twitterButton.layer.shadowColor = UIColor.black.cgColor
+        twitterButton.layer.shadowOpacity = 0.4
+        twitterButton.layer.shadowOffset = .zero
+        twitterButton.layer.shadowRadius = 10
+        twitterButton.layer.masksToBounds = false
+        twitterButton.layer.shouldRasterize = true
+        twitterButton.layer.cornerRadius = 17
+        return twitterButton
+    }()
+
+    private lazy var socialButtonStackView: UIStackView = {
+        let buttonStack = UIStackView()
+        buttonStack.axis = .horizontal
+        buttonStack.spacing = 10
+        buttonStack.distribution = .fillEqually
+        buttonStack.translatesAutoresizingMaskIntoConstraints = false
+        return buttonStack
+    }()
+
     // MARK: - Lifecycle
 
     override func viewDidLoad() {
@@ -138,6 +187,9 @@ class ViewController: UIViewController {
         connectWithStackView.addArrangedSubview(leftViewInStack)
         connectWithStackView.addArrangedSubview(connectWithLabel)
         connectWithStackView.addArrangedSubview(rightViewInStack)
+        view.addSubview(socialButtonStackView)
+        socialButtonStackView.addArrangedSubview(facebookButton)
+        socialButtonStackView.addArrangedSubview(twitterButton)
     }
 
 
@@ -195,6 +247,20 @@ class ViewController: UIViewController {
 
         rightViewInStack.snp.makeConstraints { make in
             make.height.equalTo(1)
+        }
+
+        facebookButton.snp.makeConstraints{ make in
+            make.height.equalTo(33)
+        }
+
+        twitterButton.snp.makeConstraints{ make in
+            make.height.equalTo(33)
+        }
+
+        socialButtonStackView.snp.makeConstraints{ make in
+            make.centerX.equalTo(view)
+            make.bottom.equalTo(connectWithStackView.snp.bottom).multipliedBy(1.09)
+            make.width.equalTo(view.snp.width).multipliedBy(0.8)
         }
 
     }
