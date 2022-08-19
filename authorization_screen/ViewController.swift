@@ -83,6 +83,40 @@ class ViewController: UIViewController {
         return forgotPassword
     }()
 
+    private lazy var leftViewInStack: UIView = {
+        let leftView = UIView()
+        leftView.backgroundColor = .gray
+        leftView.translatesAutoresizingMaskIntoConstraints = false
+        return leftView
+    }()
+
+    private lazy var connectWithLabel: UILabel = {
+        let connectLabel = UILabel()
+        connectLabel.text = "or connect with"
+        connectLabel.textColor = .white
+        connectLabel.textAlignment = .center
+        connectLabel.font = UIFont.systemFont(ofSize: 12)
+        connectLabel.translatesAutoresizingMaskIntoConstraints = false
+        return connectLabel
+    }()
+
+    private lazy var rightViewInStack: UIView = {
+        let rightView = UIView()
+        rightView.backgroundColor = .gray
+        rightView.translatesAutoresizingMaskIntoConstraints = false
+        return rightView
+    }()
+
+    private lazy var connectWithStackView: UIStackView = {
+        let connectStackView = UIStackView()
+        connectStackView.axis = .horizontal
+        connectStackView.distribution = .fillEqually
+        connectStackView.spacing = 10
+        connectStackView.alignment = .center
+        connectStackView.translatesAutoresizingMaskIntoConstraints = false
+        return connectStackView
+    }()
+
     // MARK: - Lifecycle
 
     override func viewDidLoad() {
@@ -100,6 +134,10 @@ class ViewController: UIViewController {
         view.addSubview(passTextField)
         view.addSubview(loginButton)
         view.addSubview(forgotYourPasswordButton)
+        view.addSubview(connectWithStackView)
+        connectWithStackView.addArrangedSubview(leftViewInStack)
+        connectWithStackView.addArrangedSubview(connectWithLabel)
+        connectWithStackView.addArrangedSubview(rightViewInStack)
     }
 
 
@@ -143,6 +181,20 @@ class ViewController: UIViewController {
         forgotYourPasswordButton.snp.makeConstraints { make in
             make.centerX.equalTo(view)
             make.top.equalTo(loginButton.snp.centerY).multipliedBy(1.1)
+        }
+
+        connectWithStackView.snp.makeConstraints { make in
+            make.centerX.equalTo(view)
+            make.width.equalTo(view.snp.width).multipliedBy(0.8)
+            make.bottom.equalTo(view.snp.bottom).multipliedBy(0.75)
+        }
+
+        leftViewInStack.snp.makeConstraints { make in
+            make.height.equalTo(1)
+        }
+
+        rightViewInStack.snp.makeConstraints { make in
+            make.height.equalTo(1)
         }
 
     }
