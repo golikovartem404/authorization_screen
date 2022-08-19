@@ -166,6 +166,31 @@ class ViewController: UIViewController {
         return buttonStack
     }()
 
+    private lazy var haveAccountLabel: UILabel = {
+        let question = UILabel()
+        question.text = "Dont have account?"
+        question.textColor = .gray
+        question.font = UIFont.systemFont(ofSize: 15, weight: .bold)
+        return question
+    }()
+
+    private lazy var signUpButton: UIButton = {
+        let signUpButton = UIButton()
+        signUpButton.setTitle("Sign Up", for: .normal)
+        signUpButton.titleLabel?.font = UIFont.systemFont(ofSize: 15, weight: .bold)
+        signUpButton.setTitleColor(UIColor(red: 161/255, green: 132/255, blue: 181/255, alpha: 1), for: .normal)
+        return signUpButton
+    }()
+
+    private lazy var signUpStackView: UIStackView = {
+        let signUpStackView = UIStackView()
+        signUpStackView.axis = .horizontal
+        signUpStackView.distribution = .fillProportionally
+        signUpStackView.spacing = 15
+        signUpStackView.translatesAutoresizingMaskIntoConstraints = false
+        return signUpStackView
+    }()
+
     // MARK: - Lifecycle
 
     override func viewDidLoad() {
@@ -190,6 +215,9 @@ class ViewController: UIViewController {
         view.addSubview(socialButtonStackView)
         socialButtonStackView.addArrangedSubview(facebookButton)
         socialButtonStackView.addArrangedSubview(twitterButton)
+        view.addSubview(signUpStackView)
+        signUpStackView.addArrangedSubview(haveAccountLabel)
+        signUpStackView.addArrangedSubview(signUpButton)
     }
 
 
@@ -263,6 +291,10 @@ class ViewController: UIViewController {
             make.width.equalTo(view.snp.width).multipliedBy(0.8)
         }
 
+        signUpStackView.snp.makeConstraints{ make in
+            make.centerX.equalTo(view)
+            make.bottom.equalTo(socialButtonStackView.snp.bottom).multipliedBy(1.1)
+        }
     }
 
 }
