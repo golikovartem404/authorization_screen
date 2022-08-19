@@ -124,7 +124,6 @@ class ViewController: UIViewController {
         facebookButton.backgroundColor = UIColor(red: 45/255, green: 173/255, blue: 252/255, alpha: 1)
         facebookButton.titleLabel?.font = UIFont.systemFont(ofSize: 13, weight: .bold)
         facebookButton.setImage(UIImage(named: "facebook"), for: .normal)
-        facebookButton.contentHorizontalAlignment = .left
         facebookButton.clipsToBounds = true
         facebookButton.layer.cornerRadius = 20
         facebookButton.layer.shadowColor = UIColor.black.cgColor
@@ -144,7 +143,6 @@ class ViewController: UIViewController {
         twitterButton.backgroundColor = UIColor(red: 38/255, green: 75/255, blue: 148/255, alpha: 1)
         twitterButton.titleLabel?.font = UIFont.systemFont(ofSize: 13, weight: .bold)
         twitterButton.setImage(UIImage(named: "twitter"), for: .normal)
-        twitterButton.contentHorizontalAlignment = .left
         twitterButton.clipsToBounds = true
         twitterButton.layer.cornerRadius = 20
         twitterButton.layer.shadowColor = UIColor.black.cgColor
