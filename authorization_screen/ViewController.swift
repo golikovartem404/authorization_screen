@@ -55,6 +55,25 @@ class ViewController: UIViewController {
         return passTextField
     }()
 
+    private lazy var loginButton: UIButton = {
+        let loginButton = UIButton()
+        loginButton.backgroundColor = UIColor(red: 161/255, green: 132/255, blue: 181/255, alpha: 1)
+        loginButton.setTitle("Login", for: .normal)
+        loginButton.setTitleColor(.white, for: .normal)
+        loginButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 20)
+        loginButton.clipsToBounds = true
+        loginButton.layer.cornerRadius = 20
+        loginButton.layer.shadowColor = UIColor.black.cgColor
+        loginButton.layer.shadowOpacity = 0.4
+        loginButton.layer.shadowOffset = .zero
+        loginButton.layer.shadowRadius = 8
+        loginButton.layer.masksToBounds = false
+        loginButton.layer.shouldRasterize = true
+        loginButton.layer.rasterizationScale = UIScreen.main.scale
+        loginButton.translatesAutoresizingMaskIntoConstraints = false
+        return loginButton
+    }()
+
     // MARK: - Lifecycle
 
     override func viewDidLoad() {
@@ -70,6 +89,7 @@ class ViewController: UIViewController {
         view.addSubview(loginLabel)
         view.addSubview(loginTextField)
         view.addSubview(passTextField)
+        view.addSubview(loginButton)
     }
 
 
@@ -99,6 +119,13 @@ class ViewController: UIViewController {
         passTextField.snp.makeConstraints { make in
             make.centerX.equalTo(view)
             make.top.equalTo(loginTextField.snp.centerY).multipliedBy(1.2)
+            make.width.equalTo(view.snp.width).multipliedBy(0.8)
+            make.height.equalTo(40)
+        }
+
+        loginButton.snp.makeConstraints{ make in
+            make.centerX.equalTo(view)
+            make.top.equalTo(passTextField.snp.centerY).multipliedBy(1.4)
             make.width.equalTo(view.snp.width).multipliedBy(0.8)
             make.height.equalTo(40)
         }
